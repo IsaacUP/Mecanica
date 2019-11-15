@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Alumnos</title>
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+</head>
+<body bgcolor="#CCCCCC">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo center"><b>Mecatonic</b></a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="/mecanicosResponsables">Mecanicos</a></li>
+                <li><a href="/clientes">Clientes</a></li>
+                <li><a href="/vehiculos">Vehiculos</a></li>
+                <li><a href="/repuestos">Repuestos</a></li>
+                <li><a href="/hojaDePartes">Hojas de Parte</a></li>
+            </ul>
+        </div>
+    </nav>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+
+<div >
+    <div class="col s7 push-s2">
+        <h1> Lista de vehiculos </h1>
+        <a class="waves-effect waves-light btn-large" href="/vehiculos/crear">Crear Nuevo</a>
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>Modelo</th>
+                    <th>Color</th>
+                    <th>Fecha entrada</th>
+                    <th>Hora entrada</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @each(vehiculo in vehiculos)
+                <tr>
+                    <th>{{vehiculo.modelo}}</th>
+                    <th>{{vehiculo.color}}</th>
+                    <th>{{vehiculo.fecha_ent}}</th>
+                    <th>{{vehiculo.hora_ent}}</th>
+                    <th>
+                        <a class="waves-effect waves-teal btn-flat" href="/vehiculos/editar/{{vehiculo.id}}">Editar</a>
+                        <a class="waves-effect waves-teal btn-flat" href="/vehiculos/eliminar/{{vehiculo.id}}">Eliminar</a>
+                    </th>
+                </tr>
+                @endeach
+            </tbody>
+        </table>
+    </div>
+</div>

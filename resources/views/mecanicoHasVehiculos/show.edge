@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Alumnos</title>
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+</head>
+<body bgcolor="#CCCCCC">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+
+<div >
+    <div class="col s7 push-s2">
+        <h1> Lista de vehiculos </h1>
+        <table class="striped">
+            <thead>
+                <tr>
+                    <th>Modelo</th>
+                    <th>Color</th>
+                    <th>Fecha entrada</th>
+                    <th>Hora entrada</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @each(mecanico in mecanicos)
+                <tr>
+                    <th>{{mecanico.vehiculo.modelo}}</th>
+                    <th>{{mecanico.vehiculo.color}}</th>
+                    <th>{{mecanico.vehiculo.fecha_ent}}</th>
+                    <th>{{mecanico.vehiculo.hora_ent}}</th>
+                    <th>
+                        <a class="waves-effect waves-teal btn-flat" href="/mecanicoHasVehiculos/eliminar/{{mecanico.id}}">Eliminar</a>
+                    </th>
+                </tr>
+                @endeach
+            </tbody>
+        </table>
+    </div>
+</div>

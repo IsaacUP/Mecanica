@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registro</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('select').formSelect();
+        });
+    </script>
+</head>
+<body>
+    <h1>Repuestos</h1>
+    <div id="container" style="width: 500px; padding: 20px">
+        <div class="row">
+            <form action="/repuestos/crear" method="post">
+
+                <div class="input-field col s5">
+                <select name="hoja_de_parte_id">
+                    @each(hojaDeParte in hojaDePartes)
+                        <option value="{{hojaDeParte.id}}">{{hojaDeParte.concepto}}</option>
+                    @endeach
+                </select>
+                </div>
+
+                <div class="input-field col s5">
+                <select name="mecanico_responsable_id">
+                    @each(mecanico in mecanicos)
+                        <option value="{{mecanico.id}}">{{mecanico.nombre}}</option>
+                    @endeach
+                </select>
+                </div>
+
+                <div class="input-field col s10">
+                    <input  id="descripcion" type="text" class="validate" name="descripcion">
+                    <label for="descripcion">Descripcion</label>
+                </div>
+                <div class="input-field col s3">
+                    <input  id="costounit" type="text" class="validate" name="costounit">
+                    <label for="costounit">Costo unitario</label>
+                </div>
+                <div class="input-field col s3">
+                    <input  id="preciounit" type="text" class="validate" name="preciounit">
+                    <label for="preciounit">Precio unitario</label>
+                </div>
+                <div class="input-field col s4">
+                    <input  id="imp_parcial" type="text" class="validate" name="imp_parcial">
+                    <label for="imp_parcial">Importe parcial</label>
+                </div>
+
+                <div class="input-field col s20" >
+                    <button class="btn waves-effect waves-light">Subir</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

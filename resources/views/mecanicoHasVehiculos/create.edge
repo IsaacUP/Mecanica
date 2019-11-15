@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registro</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('select').formSelect();
+        });
+
+        $(document).ready(function(){
+            $('.datepicker').datepicker();
+        });
+    </script>
+</head>
+<body>
+    <h1>Factura</h1>
+    <div id="container white" style="width: 500px; padding: 20px">
+        <div class="row">
+            <form action="/mecanicoHasVehiculos/crear" method="post">
+
+                <h4>Asignar Vehiculo</h4>
+
+                <div class="input-field col s6">
+                    <select name="mecanico_id">
+                        <option value="{{mecanico.id}}" selected="true">{{mecanico.nombre}}</option>
+                    </select>
+                </div>
+
+                <div class="input-field col s6">
+                    <select name="vehiculo_id">
+                        @each(vehiculo in vehiculos)
+                        <option value="{{vehiculo.id}}">{{vehiculo.modelo}} &nbsp;&nbsp;&nbsp; {{vehiculo.color}}</option>
+                        @endeach
+                    </select>
+                </div>
+
+                <div class="input-field col s20" >
+                    <button class="btn waves-effect waves-light">Subir</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

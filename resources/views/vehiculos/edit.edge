@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registro</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('select').formSelect();
+        });
+
+        $(document).ready(function(){
+            $('.datepicker').datepicker();
+        });
+    </script>
+</head>
+<body>
+    <h1>Nuevo vehiculo</h1>
+    <div id="container white" style="width: 1000px; padding: 20px">
+        <div class="row">
+            <form action="/vehiculos/crear" method="post">
+                <h4>Clientes</h4>
+
+                <div class="input-field col s1">
+                    <select name="cliente_id">
+                        @each(cliente in clientes)
+                            <option value="{{cliente.id}}">{{cliente.cliente}}</option>
+                        @endeach
+                    </select>
+                </div>
+
+                <div class="input-field col s3">
+                    <input  id="modelo" type="text" class="validate" name="modelo" value="{{vehiculo.modelo}}">
+                    <label for="modelo">Modelo</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <input  id="color" type="text" class="validate" name="color" value="{{vehiculo.color}}">
+                    <label for="color">Color</label>
+                </div>
+
+                <div class="input-field col s9">
+                    <input id="fecha_ent" type="text" name="fecha_ent" class="datepicker" value="{{vehiculo.fecha_ent}}">
+                    <label for="fecha_ent">Seleccione la fecha de entrada</label>
+                </div>
+                
+                <div class="input-field col s12">
+                    <input id="hora_ent" type="time" name="hora_ent" value="{{vehiculo.hora_ent}}">
+                    <label for="hora_ent">Seleccione la hora de entrada</label>
+                </div>
+
+
+                <div class="input-field col s20" >
+                    <button class="btn waves-effect waves-light">Subir</button>
+                </div>
+            </form>
+        <div>
+    </div>
+</body>
+</html>

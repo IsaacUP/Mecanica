@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registro</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('select').formSelect();
+        });
+    </script>
+</head>
+<body>
+    <h1>Editar Hoja de Parte</h1>
+    <div id="container" style="width: 500px; padding: 20px">
+        <div class="row">
+        <form action="/hojaDePartes/editar/{{hojaDeParte.id}}" method="post">
+
+            <div class="input-field col s5">
+            <select name="mecanico_responsable_id">
+                @each(mecanico in mecanicos)
+                    @if(mecanicoAsignado.id == mecanico.id)
+                        <option value="{{mecanico.id}}" selected="true">{{mecanico.nombre}}</option>
+                    @else
+                        <option value="{{mecanico.id}}">{{mecanico.nombre}}</option>
+                    @endif
+                @endeach
+            </select>
+            </div>
+
+            <div class="input-field col s10">
+                <input  id="concepto" type="text" class="validate" name="concepto" value="{{hojaDeParte.concepto}}">
+                <label for="concepto">Concepto</label>
+            </div>
+            <div class="input-field col s10">
+                <input  id="cantidad" type="text" class="validate" name="cantidad" value="{{hojaDeParte.cantidad}}">
+                <label for="cantidad">Cantidad</label>
+            </div>
+            <div class="input-field col s10">
+                <input  id="reparacion" type="text" class="validate" name="reparacion" value="{{hojaDeParte.reparacion}}">
+                <label for="reparacion">Reparacion</label>
+            </div>
+
+            <div class="input-field col s20" >
+                <button class="btn waves-effect waves-light">Subir</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</body>
+</html>
